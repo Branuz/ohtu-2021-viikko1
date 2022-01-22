@@ -1,4 +1,3 @@
 # ohtu-2021-viikko1
 
-
-https://github.com/Branuz/ohtu-2021-viikko1/workflows/main.yml/badge.svg
+![GitHub Actions](https://github.com/Branuz/ohtu-2021-viikko1/workflows/Java%20CI%20with%20Gradle/badge.svg)
