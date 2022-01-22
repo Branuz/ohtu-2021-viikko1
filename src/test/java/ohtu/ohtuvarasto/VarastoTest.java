@@ -65,4 +65,62 @@ public class VarastoTest {
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
+    @Test
+    public void käyttökelvoton(){
+        varasto = new Varasto(0);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void eiTyhjaVarasto(){
+        varasto = new Varasto(10, 4);
+        assertEquals(4, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void yliMaarainenSaldo(){
+        varasto = new Varasto(10, 4);
+        varasto.lisaaVarastoon(12);
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void lisataanAlleNolla(){
+        varasto = new Varasto(10, 4);
+        varasto.lisaaVarastoon(-100);
+        assertEquals(4, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenTilavuus(){
+        varasto = new Varasto(-10, 4);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void netatiivinenSaldo(){
+        varasto = new Varasto(10, -4);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void otaNegatiivinenMaara(){
+        varasto = new Varasto(10, 4);
+        varasto.otaVarastosta(-20);
+        assertEquals(4, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void otaKaikkiMitaVoidaan(){
+        varasto = new Varasto(10, 4);
+        varasto.otaVarastosta(8);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void merkkiJonoTesti(){
+        varasto = new Varasto(10, 4);
+        assertNotEquals("saldo = 4  vielä tilaa 6", varasto.toString());
+    }
+
 }
