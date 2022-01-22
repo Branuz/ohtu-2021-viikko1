@@ -114,7 +114,7 @@ public class VarastoTest {
     public void otaKaikkiMitaVoidaan(){
         varasto = new Varasto(10, 4);
         varasto.otaVarastosta(8);
-        assertEquals(100000, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
